@@ -1,0 +1,17 @@
+{
+    "extends": "@workspace/typescript-config/base.json",
+    "compilerOptions": {
+        "outDir": "build",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "types": ["jest","reflect-metadata"],
+        "baseUrl": ".",
+        // "paths": {
+        //     "@/*": ["./*"],
+        //     "@workspace/*": ["../../packages/*"]
+        // }
+    },
+    "exclude": ["node_modules/"],
+    "include": ["src/**/*.ts", "test/**/*.ts"]
+}
