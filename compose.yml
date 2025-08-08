@@ -1,0 +1,18 @@
+services:
+    frontend:
+        restart: unless-stopped
+        build:
+            dockerfile: ./apps/web/Dockerfile
+            context: .
+            target: prod
+        ports:
+            - '3000:3000'
+
+    backend:
+        restart: unless-stopped
+        build:
+            dockerfile: ./apps/api/Dockerfile
+            context: .
+            target: prod
+        ports:
+            - '8000:8000'

@@ -1,0 +1,14 @@
+services:
+  frontend:
+    image: project-template-web:dev
+    build:
+      dockerfile: ./apps/web/Dockerfile
+      context: .
+      target: dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/web/node_modules
+      - /app/apps/web/.next

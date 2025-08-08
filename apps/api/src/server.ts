@@ -74,6 +74,6 @@ const Main = () => {
     });
 };
 
-export const ShutDown = (callback: any) => httpServer && httpServer.close(callback);
+export const ShutDown:any = (callback: any) => httpServer && httpServer.close(callback);
 
 Main();

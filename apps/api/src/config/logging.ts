@@ -119,7 +119,7 @@ declare global {
         warn: (message?: any, ...optionalParams: any[]) => void;
         warning: (message?: any, ...optionalParams: any[]) => void;
         error: (message?: any, ...optionalParams: any[]) => void;
-        getCallingFunction: (error: Error) => string;
+        // getCallingFunction: (error: Error) => string;
     };
 }
 
