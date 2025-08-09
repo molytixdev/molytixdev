@@ -1,14 +1,35 @@
 services:
-  frontend:
-    image: project-template-web:dev
-    build:
-      dockerfile: ./apps/web/Dockerfile
-      context: .
-      target: dev
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/apps/web/node_modules
-      - /app/apps/web/.next
+    frontend:
+        image: molytixdev-web:dev
+        build:
+            dockerfile: ./apps/web/Dockerfile
+            context: .
+            target: dev
+        ports:
+            - '3000:3000'
+        volumes:
+            - .:/app
+            - /app/node_modules
+            - /app/apps/web/node_modules
+            - /app/apps/web/.next
+
+    backend:
+        image: molytixdev-api:dev
+        build:
+            dockerfile: ./apps/api/Dockerfile
+            context: .
+            target: dev
+        ports:
+            - '8000:8000'
+        volumes:
+            - .:/app
+            - /app/node_modules
+            - /app/apps/api/node_modules
+
+    package-builder:
+        image: molytix-package-builder:dev
+        build:
+            dockerfile: ./packages/Dockerfile
+            context: .
+        volumes:
+            - ./packages:/app/packages
