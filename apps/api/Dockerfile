@@ -56,7 +56,10 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Copy built app (dist folder) from build stage
-COPY --from=build --chown=node:node /app/apps/$APP_NAME/dist ./dist
+COPY --from=build --chown=node:node /app/apps/$APP_NAME/dist ./apps/$APP_NAME/dist
+COPY --from=build --chown=node:node /app/apps/$APP_NAME/node_modules ./apps/$APP_NAME/node_modules
+COPY --from=build --chown=node:node /app/node_modules ./node_modules
+
 
 USER node
-CMD ["node", "dist/server.js"]
+CMD ["sh", "-c", "node apps/$APP_NAME/dist/server.js"]

@@ -4,11 +4,10 @@
     "private": true,
     "main": "src/server.ts",
     "scripts": {
-        "dev": "bun run --watch src/server.ts",
-        "start": "bun run src/server.ts",
-        "test": "bun test --detectOpenHandles --coverage --maxWorkers=1",
+        "dev": "tsx watch --inspect=0.0.0.0 src/server.ts",
         "build": "rm -rf dist && tsc -p tsconfig.build.json",
-        "start-built": "bun dist/server.js"
+        "start": "node dist/server.js",
+        "test": "jest --config jest.config.ts --detectOpenHandles --coverage --maxWorkers=1"
     },
     "dependencies": {
         "dotenv": "^17.2.1",
@@ -26,6 +25,7 @@
         "supertest": "^7.1.4",
         "ts-node": "^10.9.2",
         "ts-node-dev": "^2.0.0",
+        "tsx": "^4.20.3",
         "typescript": "^5.9.2"
     }
 }

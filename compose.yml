@@ -1,18 +1,26 @@
 services:
     frontend:
+        image: molytixdev-web:prod
         restart: unless-stopped
         build:
             dockerfile: ./apps/web/Dockerfile
             context: .
             target: prod
+        environment:
+            - NODE_ENV=production
         ports:
             - '3000:3000'
 
     backend:
+        image: molytixdev-api:prod
         restart: unless-stopped
         build:
             dockerfile: ./apps/api/Dockerfile
             context: .
             target: prod
+        env_file:
+            - ./apps/api/.env
+        environment:
+            - NODE_ENV=production
         ports:
             - '8000:8000'

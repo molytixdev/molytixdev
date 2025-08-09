@@ -1,0 +1,6 @@
+# TO Create Image
+# docker build --no-cache -f ./Dockerfile/context/path -t Image-Name .
+
+# To Debug Image
+# docker run -it --entrypoint /bin/sh Image-Name
+
