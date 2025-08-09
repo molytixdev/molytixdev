@@ -15,9 +15,6 @@
     - [Class Diagram](#class-diagram)
     - [Use Case Diagram](#use-case-diagram)
 11. [Installation](#installation)
-    - [Add ENVs](#add-environment-variables)
-    - [Shell Command](#shell-command)
-    - [Deployment Command (Vercel)](#deployment-command-vercel)
 12. [Screenshots](#screenshots)
 
 ---
@@ -26,7 +23,8 @@
 
 Molytix Panel is a web-based platform for managing client projects, meetings, and communications in one place.
 
-The **MVP** enables hosting meetings directly in the platform, generating AI-powered transcripts, extracting functional/non-functional requirements, and providing actionable “next step” recommendations.
+The **MVP** enables hosting meetings directly in the platform, generating AI-powered transcripts, extracting functional/non-functional requirements,
+and providing actionable “next step” recommendations.
 
 ---
 
@@ -44,8 +42,8 @@ The **MVP** enables hosting meetings directly in the platform, generating AI-pow
 ## System Overview (Tech Stack)
 
 - **Type:** Web application (responsive for all browsers)
-- **Frontend:** Next.js + shadcn/ui
-- **Backend:** Next.js + Drizzle ORM + tRCP
+- **Frontend:** Next.js + shadcn/ui + tRCP
+- **Backend:** Express + Drizzle ORM + tRCP
 - **Database:** PostgreSQL (NeonDB)
 - **Auth:** Better Auth
 - **Video:** WebRTC via Stream API
@@ -58,21 +56,21 @@ The **MVP** enables hosting meetings directly in the platform, generating AI-pow
 ## Functional Requirements
 
 1. **Project Management**
-   - Create/edit/delete projects
-   - Assign/remove members to projects
-   - Role-based permissions for access control
+    - Create/edit/delete projects
+    - Assign/remove members to projects
+    - Role-based permissions for access control
 2. **Meeting Management**
-   - Schedule and host meetings within a project
-   - Join meetings via browser
-   - Record meeting video/audio
+    - Schedule and host meetings within a project
+    - Join meetings via browser
+    - Record meeting video/audio
 3. **AI Features**
-   - Transcribe meeting audio using OpenAI API
-   - Generate AI-powered meeting summaries
-   - Extract functional & non-functional requirements from transcripts
-   - Suggest next steps for projects
+    - Transcribe meeting audio using OpenAI API
+    - Generate AI-powered meeting summaries
+    - Extract functional & non-functional requirements from transcripts
+    - Suggest next steps for projects
 4. **Data Access**
-   - Store transcripts, summaries, and AI outputs securely in DB
-   - Display meeting history and related outputs to authorized users
+    - Store transcripts, summaries, and AI outputs securely in DB
+    - Display meeting history and related outputs to authorized users
 
 ---
 
@@ -93,9 +91,9 @@ The **MVP** enables hosting meetings directly in the platform, generating AI-pow
 1. Meeting starts → video/audio recorded via Stream API
 2. Recording sent to OpenAI API for transcription
 3. Transcript processed for:
-   - Summary
-   - Requirement extraction
-   - Next-step suggestions
+    - Summary
+    - Requirement extraction
+    - Next-step suggestions
 4. Results stored in DB and linked to the relevant project
 5. Authorized users can view outputs anytime
 
@@ -133,9 +131,8 @@ The **MVP** enables hosting meetings directly in the platform, generating AI-pow
 ## Diagrams
 
 ### Use Case Diagram
+
 [Open in Eraser](https://app.eraser.io/workspace/cxc4Lx0KRptBS1zORVyj?elements=HXF9qkyMa66t36Xy6uiKrg)
-
-
 
 ### Class Diagram
 
@@ -145,30 +142,7 @@ The **MVP** enables hosting meetings directly in the platform, generating AI-pow
 
 ## Installation
 
-#### Add Environment Variables
-
-Create **.env.local** from '.env.example' file and declare the project environment variables
-
-Starting a development instance of the app
-
-#### Shell Command
-
-```shell
-# Install Dependencies
-bun install
-
-# Connect to Neondb and Push Schemas
-
-
-# Start the app
-bun run dev
-```
-
-#### Deployment Command (Vercel)
-
-```shell
-bun run vercel-build
-```
+For more info on technical aspects of the project reach [Techinical Readme](./TECHNICAL-README.md)
 
 ---
 
