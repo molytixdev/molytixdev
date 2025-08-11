@@ -4,6 +4,8 @@ import { type Request, type Response } from 'express';
 // Decorators
 import Controller from '../decorators/controller';
 import Route from '../decorators/route';
+import db from '@workspace/db';
+import * as schema  from '@workspace/db/schema';
 // import Validate from '../decorators/validate';
 
 // const testSchema = Joi.object({
@@ -17,6 +19,13 @@ class Test {
     @Route('get', '/get')
     getTest(req: Request, res: Response) {
         res.status(200).json({ message: 'Test Route Is Working :)' });
+    }
+
+    @Route('get', '/users') 
+    async getUsers(req: Request, res: Response) {
+        const result = await db.select().from(schema.user);
+
+        res.status(200).json({ result });
     }
 
     @Route('post', '/post')
