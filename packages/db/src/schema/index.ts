@@ -1,8 +1,11 @@
-import { user } from '@workspace/db/schema/user';
-import { session } from '@workspace/db/schema/session';
+// src/schema/index.ts
+export { user } from './user';
+export { session } from './session';
+export { account } from './account';
+export { verification } from './verification';
 
-import { account } from '@workspace/db/schema/account';
-
-import { verification } from '@workspace/db/schema/verification';
-
-export { user, session, account, verification };
+// If you want to export types as well:
+export type * from './user';
+export type * from './session';
+export type * from './account';
+export type * from './verification';

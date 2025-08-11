@@ -1,8 +1,8 @@
 import { Table, getTableName, sql } from 'drizzle-orm';
-import env from '@workspace/db/config/config';
+import env from './config';
 
-import * as schema from '@workspace/db/schema';
-import * as seeds from '@workspace/db/seeds';
+import * as schema from './schema';
+import * as seeds from './seeds';
 
 import db, { type db as dbType } from '.';
 

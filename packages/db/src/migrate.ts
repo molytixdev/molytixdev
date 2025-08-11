@@ -1,18 +1,18 @@
 import { drizzle } from 'drizzle-orm/neon-http';
 import { neon } from '@neondatabase/serverless';
 import { migrate } from 'drizzle-orm/neon-http/migrator';
-import env from '@workspace/db/config/config.js';
+import env from './config';
+import db from '.';
 
 if (!env.DB_MIGRATING) {
     throw new Error('You must set DB_MIGRATING to "true" when running migrations');
 }
 
-const sql = neon(env.DATABASE_URL);
-const db = drizzle(sql);
+console.log('==============================', env.DATABASE_URL);
 
 const main = async () => {
     try {
-        await migrate(db, { migrationsFolder: 'drizzle' });
+        await migrate(db, { migrationsFolder: './src/migrations' });
         console.log('Migration completed');
     } catch (error) {
         console.error('Error during migration:', error);

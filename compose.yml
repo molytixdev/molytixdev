@@ -19,7 +19,7 @@ services:
             context: .
             target: prod
         env_file:
-            - ./apps/api/.env
+            - ./.env
         environment:
             - NODE_ENV=production
         ports:
