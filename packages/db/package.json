@@ -2,9 +2,11 @@
     "name": "@workspace/db",
     "version": "0.0.0",
     "private": true,
-    "main": "src/index.js",
+    "main": "dist/index.js",
     "scripts": {
         "lint": "eslint . --max-warnings 0",
+        "dev": "tsc --watch -p tsconfig.json",
+        "build": "rm -rf dist && tsc -p tsconfig.json",
         "db:generate": "drizzle-kit generate",
         "db:migrate": "cross-env DB_MIGRATING=true tsx src/migrate.ts",
         "db:seed": "cross-env DB_SEEDING=true tsx src/seed.ts"
@@ -26,11 +28,9 @@
         "tsx": "^4.20.3"
     },
     "exports": {
-        ".": "./src/index.ts",
-        "./schema": "./src/schema/index.ts",
-        "./schema/*": "./src/schema/*.ts",
-        "./seeds/*": "./src/seeds/*.ts",
-        "./config": "./src/config/*.ts",
-        "./env": "./.env"
+        ".": "./dist/index.js",
+        "./schema": "./dist/schema/index.js",
+        "./schema/*": "./dist/schema/*.js",
+        "./config": "./dist/config/*.js"
     }
 }

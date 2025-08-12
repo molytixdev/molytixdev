@@ -38,7 +38,9 @@ COPY --from=prune /temp/prune/out/json/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=prune /temp/prune/out/json/ ./
 RUN pnpm install -r --frozen-lockfile
 COPY --from=prune /temp/prune/out/full/ ./
-RUN pnpm turbo build -F @workspace/$APP_NAME
+
+# Build all dependencies first, then the API
+RUN pnpm turbo build 
 
 # ADDED: Production dependencies stage - only install production deps
 FROM base AS prod-deps
@@ -57,6 +59,14 @@ WORKDIR /app
 COPY --from=prod-deps --chown=node:node /app/node_modules ./node_modules
 COPY --from=prod-deps --chown=node:node /app/apps/$APP_NAME/node_modules ./apps/$APP_NAME/node_modules
 COPY --from=prod-deps --chown=node:node /app/packages ./packages
+
+# Copy built packages (not source)
+COPY --from=build --chown=node:node /app/packages/db/dist ./packages/db/dist
+COPY --from=build --chown=node:node /app/packages/db/package.json ./packages/db/package.json
+COPY --from=build --chown=node:node /app/packages/db/node_modules ./packages/db/node_modules
+
+
+
 # Copy built application
 COPY --from=build --chown=node:node /app/apps/$APP_NAME/dist ./apps/$APP_NAME/dist
 COPY --from=build --chown=node:node /app/apps/$APP_NAME/package.json ./apps/$APP_NAME/package.json
