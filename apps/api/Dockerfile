@@ -28,7 +28,7 @@ COPY --from=prune /temp/prune/out/json/ ./
 RUN apk add --no-cache jq && pnpm install -r --frozen-lockfile
 COPY --from=prune /temp/prune/out/full/ ./
 USER node
-CMD ["sh", "-c", "./packages/dev-all.sh"]
+CMD ["sh", "-c", "pnpm turbo dev -F @workspace/$APP_NAME --color"]
 
 # ADDED: Build stage for API (was missing)
 FROM base AS build
